@@ -8,7 +8,7 @@ def parse_groups_file(file_path):
        for match in re.findall(pattern, text):
           category, words_string = match
           words = words_string.split(", ")
-          parsed_data[category] = words
+          parsed_data[category] = set(words)
     return parsed_data
 
 def main():
