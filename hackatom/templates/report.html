@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты анализа причин увольнения сотрудников</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Заголовок сайта</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Раздел 1: Текст, может какое-то вступление(можно убрать)</h2>
+            <p>Здесь будет текст, описывающий тему.</p>
+            <p>Можно добавить больше текста, разбить его на абзацы.</p>
+        </section>
+
+        <section>
+            <h2>Раздел 2: Общая диаграмма с причинами, какой-то комментарий по желанию</h2>    
+            <div style="width:300px; height:200px">
+            <canvas id="chart1" width="300" height="200"></canvas>
+            <script>
+                new Chart(document.getElementById("chart1"), {
+                type: 'bar',
+                data: {
+                    labels: ["C++", "Java", "Blockchain", "PHP", "Python","HTML"],
+                    datasets: [{
+                        label: "Technology Learned by Students",
+                        backgroundColor: ["#FFC0CB", "#0000FF",
+                            "#00FFFF", "#FFA500", "#FF7F50","#FF0000"],
+                        data: [234, 356, 819, 732, 213, 542]
+                    }]
+                },
+                options: {
+                legend: { display: true },
+                indexAxis: 'x',
+                title: {
+                    display: true,
+                    text: 'Bar Chart using ChartJS library'
+                }
+                }
+                });
+            </script>
+            </div>   
+        </section>
+
+        <section>
+            <h2>Раздел 3: Вопрос 2</h2>
+            <p>Диаграмма, её описание</p>
+            <canvas id="chart1" width="600" height="400"></canvas>
+        </section>
+
+        <section>
+            <h2>Раздел 4: Вопрос 3</h2>
+            <p>Диаграмма, её описание</p>
+            <canvas id="chart3" width="600" height="400"></canvas>
+        </section>
+
+        <section>
+            <h2>Раздел 5: Вопрос 4</h2>
+            <p>Диаграмма, её описание</p>
+            <canvas id="chart4" width="600" height="400"></canvas>
+        </section>
+    </main>
+     
+</body>
+</html>
+

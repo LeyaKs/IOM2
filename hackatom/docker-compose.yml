@@ -1,0 +1,13 @@
+---
+
+services:
+    hackatom:
+        container_name: main
+        network_mode: "host"
+        ports:
+            - 5000:5000
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        restart: always
+...
