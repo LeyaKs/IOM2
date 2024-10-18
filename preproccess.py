@@ -1,35 +1,14 @@
-import openpyxl
-
-def parsing(file_name):
-    wb = openpyxl.load_workbook(file_name)
-    result = []
-    index = 0
-    for sheet in wb:        #Проход по страницам excel файла
-        answers = []        #Список ответов для каждого опрошенного
-        check_first_row = 1 #Флаг проверки первой строки 
-        for row in sheet.iter_rows(values_only=True):   #Проход по строкам на каждой странице
-            if (check_first_row == 1):
-                check_first_row = 0
-                continue
-            answers.append(list(row))   #Добавление ответа в список
-        result.append(answers)  #Добавление ответов в результирующий список
-    return result
-
-
-USELESS_SYMBOLS = ['.', ',', '!', '?']
-USELESS_ANSWERS = ['нет', 'спасибо']
-
 '''
 prepross for user and hr
 '''
-def preprocess(array_hr, array_user):
-    return preprocess_user(array_user) + preprocess_hr(array_hr)
+def preprocess(array):
+    return preprocess_user(array[0]) + preprocess_hr(array[1])
 
 
 '''
 
 '''
-SPECIAL_WORDS = ['тест', '-', 'none']
+USER_SPECIAL_WORDS = ['тест', '-', 'none']
 LEN_ACCESS = 5
 QUESTION_STAY = 1       # index
 QUESTION_RETURN = 2
@@ -66,7 +45,7 @@ def user_line_purify(string, column, string_dlc = ''):
     if len(string) < LEN_ACCESS:
         string = str(string)
         for word in string.split():                                     # проверка на мусор
-            if word in SPECIAL_WORDS:
+            if word in USER_SPECIAL_WORDS:
                 string = ''
                 break
     return string
@@ -74,19 +53,19 @@ def user_line_purify(string, column, string_dlc = ''):
 '''
 
 '''
+HR_SPECIAL_WORDS = ['комментариев нет', 'без комментария', 'комментарий отсутствует']
 def preprocess_hr(array):
     array = array_purify(array)
     lines_count = len(array)
     columns_count = len(array[0]) if len(array) > 0 else 0
     for line in range(lines_count):
-        # объединение 1 и 1.1 вопросов
-        array[line].insert(0, '')
-        # обработка каждой строки
-        array[line] = [hr_line_purify(str(string), column, string_dlc) for string, column, string_dlc in string_unite(array[line], range(5))]
+        # добавление 1 ответа
+        if any([word in array[line][3] for word in HR_SPECIAL_WORDS]):
+            array[line].insert(0, 'желание сменить направление дейстельности')
+        else:
+            array[line].insert(0, '')
     return array
 
-def hr_line_purify(string):
-    return string
 '''
 purify array: lower and delete useless symbols
 '''
@@ -95,13 +74,10 @@ def array_purify(array):
         array[line] = [string_purify(string) for string in array[line]]
     return array
 
-
+USELESS_SYMBOLS = ['!', '@', '"', '#', '№', '$', ';', '%', '^', ':', '&', '?', '*', '(', ')', '-', '_', '+', '=', '\\', '|', '/', '\'', '[', ']', '{', '}', '.', '<', '>']
 def string_purify(string):
     string = str(string).lower()
     for symbols_delete in USELESS_SYMBOLS:
         string = string.replace(symbols_delete, '')
     return string
 
-array = preprocess_user(parsing('task.xlsx')[0])
-for i in range(5):
-    print(array[i])
