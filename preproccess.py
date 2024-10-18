@@ -98,4 +98,4 @@ def string_purify(string):
     string = str(string).lower()
     for symbols_delete in USELESS_SYMBOLS:
         string = string.replace(symbols_delete, '')
-    return tokenization
+    return string
