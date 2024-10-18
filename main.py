@@ -11,6 +11,8 @@ def upload_file():
     file = request.files['file']
     if 'file' not in request.files or file.filename == '':
       return 'Файл не выбран'
+    input_file_path = os.path.join('uploads', file.filename)
+    file.save(input_file_path)
 
     array = [{'A':24, 'B':64}, {'A1':25, 'B1':64}]  
     rep(array)
@@ -50,5 +52,10 @@ def rep(array):
 
       outfile.write(line)
 
+def init_dir(filename):
+    if not os.path.exists(filename):
+        os.makedirs(filename)
+
 if __name__ == '__main__':
+  init_dir('uploads')
   app.run(host='0.0.0.0', debug=True)
