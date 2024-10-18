@@ -11,12 +11,12 @@ def upload_file():
     file = request.files['file']
     if 'file' not in request.files or file.filename == '':
       return 'Файл не выбран'
-    
-    inp = {'A':24, 'B':64}
+
+    array = [{'A':24, 'B':64}, {'A1':25, 'B1':64}]  
+    rep(array)
     # Передача данных в JSON-формате в HTML
     #chart_data_json = json.dumps(chart_data)
-    rep(list(inp.keys()), list(inp.values()))
-
+    
     return render_template('report.html')
 
 
@@ -24,23 +24,31 @@ def upload_file():
 
 
 
-def rep(keys, values):
-  str_keys = ""
-  str_values = ""
-  for key in keys:
-    str_keys += key
-    if key != keys[-1]:
-      str_keys += '" , "'
-  for value in values:
-    str_values += str(value)
-    if value != values[-1]:
-      str_values += ' , '
-  with open("templates/report_sample.html", 'r') as infile, open("templates/report.html", 'w', encoding='utf-8') as outfile:
+def rep(array):
+  ind = 1
+  with open("templates/report_sample.html", 'r+') as infile, open("templates/report.html", 'w', encoding='utf-8') as outfile:
     for line in infile:
-      line = line.replace(f'@k', str_keys)
-      line = line.replace(f'@v', str_values)
-      outfile.write(line)
+      
+      keys = list(array[ind-1].keys())
+      values = list(array[ind-1].values())
 
+      str_keys = ""
+      str_values = ""
+      for key in keys:
+        str_keys += key
+        if key != keys[-1]:
+          str_keys += '" , "'
+      for value in values:
+        str_values += str(value)
+        if value != values[-1]:
+          str_values += ' , '    
+
+      line = line.replace(f'@k{ind}', str_keys)
+      line = line.replace(f'@v{ind}', str_values)
+      if str_values in line and ind != len(array):
+        ind += 1
+
+      outfile.write(line)
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)

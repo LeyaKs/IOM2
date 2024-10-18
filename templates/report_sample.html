@@ -27,12 +27,12 @@
                 new Chart(document.getElementById("chart1"), {
                 type: 'bar',
                 data: {
-                    labels: ["@k"],
+                    labels: ["@k1"],
                     datasets: [{
                         label: "Technology Learned by Students",
                         backgroundColor: ["#FFC0CB", "#0000FF",
                             "#00FFFF", "#FFA500", "#FF7F50","#FF0000"],
-                        data: [@v]
+                        data: [@v1]
                     }]
                 },
                 options: {
@@ -51,7 +51,31 @@
         <section>
             <h2>Раздел 3: Вопрос 2</h2>
             <p>Диаграмма, её описание</p>
-            <canvas id="chart1" width="600" height="400"></canvas>
+            <div style="width:300px; height:200px">
+            <canvas id="chart2" width="300" height="200"></canvas>
+            <script>
+                new Chart(document.getElementById("chart2"), {
+                type: 'bar',
+                data: {
+                    labels: ["@k2"],
+                    datasets: [{
+                        label: "Technology Learned by Students",
+                        backgroundColor: ["#FFC0CB", "#0000FF",
+                            "#00FFFF", "#FFA500", "#FF7F50","#FF0000"],
+                        data: [@v2]
+                    }]
+                },
+                options: {
+                legend: { display: true },
+                indexAxis: 'x',
+                title: {
+                    display: true,
+                    text: 'Bar Chart using ChartJS library'
+                }
+                }
+                });
+            </script>
+            </div>
         </section>
 
         <section>
