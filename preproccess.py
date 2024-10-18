@@ -1,3 +1,18 @@
+import openpyxl
+def parsing(file_name):
+    wb = openpyxl.load_workbook(file_name)
+    result = []
+    index = 0
+    for sheet in wb:        #Проход по страницам excel файла
+        answers = []        #Список ответов для каждого опрошенного
+        check_first_row = 1 #Флаг проверки первой строки 
+        for row in sheet.iter_rows(values_only=True):   #Проход по строкам на каждой странице
+            if (check_first_row == 1):
+                check_first_row = 0
+                continue
+            answers.append(list(row))   #Добавление ответа в список
+        result.append(answers)  #Добавление ответов в результирующий список
+    return result
 '''
 prepross for user and hr
 '''
@@ -15,7 +30,7 @@ def preprocess(array):
             
         length_hr = len(array_hr)
         for j in range(length_hr):
-            if array_hr[j][i] != '' or any(word in array_user[j][i] for word in USELESS_ANSWERS) and i == 0:
+            if array_hr[j][i] != '' or any(word in array_hr[j][i] for word in USELESS_ANSWERS) and i == 0:
                 array_ans[i].append(array_hr[j][i])
             
     return array_ans
@@ -99,3 +114,8 @@ def string_purify(string):
     for symbols_delete in USELESS_SYMBOLS:
         string = string.replace(symbols_delete, '')
     return string
+
+array = preprocess(parsing('task.xlsx'))
+for i in range(50):
+    print(array[0][i])
+    print()
