@@ -2,7 +2,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import pymorphy3
 import re
 
-_g_key_words_amount = 6
+_g_key_words_amount = 3000
 _g_morph = pymorphy3.MorphAnalyzer()
 
 def to_key_words(questions : list[list[str]]) -> list[list[str]]:
