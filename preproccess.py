@@ -2,7 +2,20 @@
 prepross for user and hr
 '''
 def preprocess(array):
-    return preprocess_user(array[0]) + preprocess_hr(array[1])
+    array_ans = [[],[],[],[],[]]
+    array_user = preprocess_user(array[0])
+    array_hr = preprocess_hr(array[1])
+    for i in range(5):
+        if i != 4:
+            length_user = len(array_user)
+            for j in range(length_user):
+                array_ans[i].append(array_user[j][i])
+            
+        length_hr = len(array_hr)
+        for j in range(length_hr):
+            array_ans[i].append(array_hr[j][i])
+            
+    return array_ans
 
 
 '''
@@ -64,6 +77,9 @@ def preprocess_hr(array):
             array[line].insert(0, 'желание сменить направление дейстельности')
         else:
             array[line].insert(0, '')
+        for column in range(5):
+            if any([word in array[line][column] for word in USER_SPECIAL_WORDS]):
+                array[line][column] = ''
     return array
 
 '''
@@ -80,4 +96,3 @@ def string_purify(string):
     for symbols_delete in USELESS_SYMBOLS:
         string = string.replace(symbols_delete, '')
     return string
-
