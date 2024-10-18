@@ -6,12 +6,13 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
-   return render_template('index.html')
+    if request.method == 'POST':
+        file = request.files['file']
+        if (not file) & ('file' not in request.files or file.filename == ''):
+            return 'Файл не выбран'
+        return render_template('report.html')
+    return render_template('index.html')
 
-def init_dir(filename):
-  if not os.path.exists(filename):
-    os.makedirs(filename)
 
 if __name__ == '__main__':
-  init_dir('uploads')
   app.run(host='0.0.0.0', debug=True)
