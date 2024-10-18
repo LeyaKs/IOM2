@@ -1,9 +1,9 @@
-from keywords import to_key_words
-from parsing import parsing
-from preproccess import preprocess
-from translator import keywords_translate
-from groups_parse import parse_groups_file
-from grouping import group_keywords
+from src.keywords import to_key_words
+from src.parsing import parsing
+from src.preproccess import preprocess
+from src.translator import keywords_translate
+from src.groups_parse import parse_groups_file
+from src.grouping import group_keywords
 
 def group(filename : str) -> list[dict[str, int]]:
     parsing_res = parsing(filename)
