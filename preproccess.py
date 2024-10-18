@@ -1,6 +1,7 @@
 '''
 prepross for user and hr
 '''
+USELESS_ANSWERS = ['да', 'нет']
 def preprocess(array):
     array_ans = [[],[],[],[],[]]
     array_user = preprocess_user(array[0])
@@ -9,12 +10,12 @@ def preprocess(array):
         if i != 4:
             length_user = len(array_user)
             for j in range(length_user):
-                if array_user[j][i] != '':
+                if array_user[j][i] != '' or any(word in array_user[j][i] for word in USELESS_ANSWERS) and i == 0:
                     array_ans[i].append(array_user[j][i])
             
         length_hr = len(array_hr)
         for j in range(length_hr):
-            if (array_hr[j][i] != ''):
+            if array_hr[j][i] != '' or any(word in array_user[j][i] for word in USELESS_ANSWERS) and i == 0:
                 array_ans[i].append(array_hr[j][i])
             
     return array_ans
