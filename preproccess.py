@@ -1,9 +1,3 @@
-import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('punkt_tab')
 '''
 prepross for user and hr
 '''
@@ -101,10 +95,7 @@ def array_purify(array):
 
 USELESS_SYMBOLS = ['!', '@', '"', '#', '№', '$', ';', '%', '^', ':', '&', '?', '*', '(', ')', '-', '_', '+', '=', '\\', '|', '/', '\'', '[', ']', '{', '}', '.', '<', '>']
 def string_purify(string):
-    
     string = str(string).lower()
     for symbols_delete in USELESS_SYMBOLS:
         string = string.replace(symbols_delete, '')
-    tokens = word_tokenize(string)
-    tokenization = ' '.join([word for word in tokens if not word in stopwords.words('russian')])
     return tokenization
