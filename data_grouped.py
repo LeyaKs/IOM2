@@ -6,7 +6,7 @@ from groups_parse import parse_groups_file
 from grouping import group_keywords
 
 def group(filename : str) -> list[dict[str, int]]:
-    parsing_res = parsing("test.xlsx")
+    parsing_res = parsing(filename)
     prep_res = preprocess(parsing_res)
     keywords_res = to_key_words(prep_res)
     groups_parsed = parse_groups_file("./resources/group.txt")
