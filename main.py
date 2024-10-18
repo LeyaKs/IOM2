@@ -33,18 +33,36 @@ def rep(array):
       
       keys = list(array[ind-1].keys())
       values = list(array[ind-1].values())
-
       str_keys = ""
       str_values = ""
-      for key in keys:
-        str_keys += key
-        if key != keys[-1]:
-          str_keys += '" , "'
-      for value in values:
-        str_values += str(value)
-        if value != values[-1]:
-          str_values += ' , '    
-
+      switch(ind):
+        case 2:
+          for index in range(0,11):
+            str_keys += keys[index]
+            if key != keys[10]:
+              str_keys += '" , "'
+            str_values += values[index]
+            if value != values[10]:
+              str_values += ' , '  
+          break;
+        case 3:
+          for index in range(11,18):
+            str_keys += keys[index]
+            if key != keys[17]:
+              str_keys += '" , "'
+            str_values += values[index]
+             if value != values[17]:
+              str_values += ' , '  
+          break;
+        default:
+          for key in keys:
+            str_keys += key
+            if key != keys[-1]:
+              str_keys += '" , "'
+          for value in values:
+            str_values += str(value)
+            if value != values[-1]:
+              str_values += ' , '    
       line = line.replace(f'@k{ind}', str_keys)
       line = line.replace(f'@v{ind}', str_values)
       if str_values in line and ind != len(array):
