@@ -7,29 +7,30 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
+
 <body>
     <header>
-        <h1>Заголовок сайта</h1>
+        <h1 align="center">Заголовок сайта</h1>
     </header>
 
     <main>
         <section>
-            <h2>Раздел 1: Текст, может какое-то вступление(можно убрать)</h2>
+            <h2 style="margin-left: 5%">Раздел 1: Текст, может какое-то вступление(можно убрать)</h2>
             <p>Здесь будет текст, описывающий тему.</p>
             <p>Можно добавить больше текста, разбить его на абзацы.</p>
         </section>
 
         <section>
-            <h2>Раздел 2: Общая диаграмма с причинами, какой-то комментарий по желанию</h2>    
-            <div style="width:500px; height:500px">
-            <canvas id="chart1" width="300" height="200"></canvas>
+            <h2 style="margin-left: 5%">Раздел 2: Общая диаграмма с причинами, какой-то комментарий по желанию</h2>    
+            <div style="align-items: center; width:500px; height:500px; margin-left: 5%; margin-top: 3%">
+            <canvas id="chart1" width="300" height="200" ></canvas>
             <script>
                 new Chart(document.getElementById("chart1"), {
-                type: 'horizontalBar',
+                type: 'bar',
                 data: {
                     labels: ["A" , "B"],
                     datasets: [{
-                        label: "Technology Learned by Students",
+                        label: "Название первой диаграммы",
                         data: [24 , 64],
                         backgroundColor: [
                             'rgba(0, 99, 132, 0.6)',
@@ -51,13 +52,95 @@
                     
                 },
                 options: {
-                    
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'right' // Положение легенды
+                    align: "center",
+                    indexAxis: 'y',
+                    elements: {
+                        rectangle: {
+                        borderSkipped: 'left',
                         }
-                    }
+                    },
+                }
+                });
+            </script>
+            </div>     
+            <div style="align-items: center; width:500px; height:500px; margin-left: 5%; margin-top: 3%">
+            <canvas id="chart2" width="300" height="200" ></canvas>
+            <script>
+                new Chart(document.getElementById("chart2"), {
+                type: 'bar',
+                data: {
+                    labels: ["A1" , "B1"],
+                    datasets: [{
+                        label: "Название 2 диаграммы",
+                        data: [25 , 64],
+                        backgroundColor: [
+                            'rgba(0, 99, 132, 0.6)',
+                            'rgba(60, 99, 132, 0.6)',
+                            'rgba(120, 99, 132, 0.6)',
+                            'rgba(180, 99, 132, 0.6)',
+                            'rgba(240, 99, 132, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(0, 99, 132, 1)',
+                            'rgba(60, 99, 132, 1)',
+                            'rgba(120, 99, 132, 1)',
+                            'rgba(180, 99, 132, 1)',
+                            'rgba(240, 99, 132, 1)'
+                        ],
+                        borderWidth: 2,
+                        hoverBorderWidth: 0
+                    }],
+                    
+                },
+                options: {
+                    align: "center",
+                    indexAxis: 'y',
+                    elements: {
+                        rectangle: {
+                        borderSkipped: 'left',
+                        }
+                    },
+                }
+                });
+            </script>
+            </div>   
+            <div style="align-items: center; width:500px; height:500px; margin-left: 5%; margin-top: 3%">
+            <canvas id="chart3" width="300" height="200" ></canvas>
+            <script>
+                new Chart(document.getElementById("chart3"), {
+                type: 'bar',
+                data: {
+                    labels: ["@k3"],
+                    datasets: [{
+                        label: "Название 3 диаграммы",
+                        data: [@v3],
+                        backgroundColor: [
+                            'rgba(0, 99, 132, 0.6)',
+                            'rgba(60, 99, 132, 0.6)',
+                            'rgba(120, 99, 132, 0.6)',
+                            'rgba(180, 99, 132, 0.6)',
+                            'rgba(240, 99, 132, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(0, 99, 132, 1)',
+                            'rgba(60, 99, 132, 1)',
+                            'rgba(120, 99, 132, 1)',
+                            'rgba(180, 99, 132, 1)',
+                            'rgba(240, 99, 132, 1)'
+                        ],
+                        borderWidth: 2,
+                        hoverBorderWidth: 0
+                    }],
+                    
+                },
+                options: {
+                    align: "center",
+                    indexAxis: 'y',
+                    elements: {
+                        rectangle: {
+                        borderSkipped: 'left',
+                        }
+                    },
                 }
                 });
             </script>
@@ -65,69 +148,139 @@
         </section>
 
         <section>
-            <h2>Раздел 3: Вопрос 2</h2>
-            <p>Диаграмма, её описание</p>
-            <div style="width:300px; height:200px">
-            <canvas id="chart2" width="300" height="200"></canvas>
+            <h2 style="margin-left: 5%">Раздел 2: Общая диаграмма с причинами, какой-то комментарий по желанию</h2>    
+            <div style="align-items: center; width:500px; height:500px; margin-left: 5%; margin-top: 3%">
+            <canvas id="chart4" width="300" height="200" ></canvas>
             <script>
-                new Chart(document.getElementById("chart2"), {
-                type: 'pie',
+                new Chart(document.getElementById("chart4"), {
+                type: 'bar',
                 data: {
-                    labels: ["A1" , "B1"],
+                    labels: ["@k4"],
                     datasets: [{
-                        label: "Technology Learned by Students",
-                        backgroundColor: ["#FFC0CB", "#0000FF",
-                            "#00FFFF", "#FFA500", "#FF7F50","#FF0000"],
-                        data: [25 , 64],
+                        label: "Название 4 диаграммы",
+                        data: [@v4],
                         backgroundColor: [
                             'rgba(0, 99, 132, 0.6)',
-                            'rgba(30, 99, 132, 0.6)',
                             'rgba(60, 99, 132, 0.6)',
-                            'rgba(90, 99, 132, 0.6)',
                             'rgba(120, 99, 132, 0.6)',
-                            'rgba(150, 99, 132, 0.6)',
                             'rgba(180, 99, 132, 0.6)',
-                            'rgba(210, 99, 132, 0.6)',
                             'rgba(240, 99, 132, 0.6)'
                         ],
                         borderColor: [
                             'rgba(0, 99, 132, 1)',
-                            'rgba(30, 99, 132, 1)',
                             'rgba(60, 99, 132, 1)',
-                            'rgba(90, 99, 132, 1)',
                             'rgba(120, 99, 132, 1)',
-                            'rgba(150, 99, 132, 1)',
                             'rgba(180, 99, 132, 1)',
-                            'rgba(210, 99, 132, 1)',
                             'rgba(240, 99, 132, 1)'
                         ],
                         borderWidth: 2,
                         hoverBorderWidth: 0
-                    }]
+                    }],
+                    
                 },
                 options: {
-                legend: { display: true },
-                indexAxis: 'x',
-                title: {
-                    display: true,
-                    text: 'Bar Chart using ChartJS library'
-                }
+                    align: "center",
+                    indexAxis: 'y',
+                    elements: {
+                        rectangle: {
+                        borderSkipped: 'left',
+                        }
+                    },
                 }
                 });
             </script>
-            </div>
+            </div>   
         </section>
 
         <section>
-            <h2>Раздел 4: Вопрос 3</h2>
-            <p>Диаграмма, её описание</p>
-            <canvas id="chart3" width="600" height="400"></canvas>
+            <h2 style="margin-left: 5%">Раздел 3: Общая диаграмма с причинами, какой-то комментарий по желанию</h2>    
+            <div style="align-items: center; width:500px; height:500px; margin-left: 5%; margin-top: 3%">
+            <canvas id="chart5" width="300" height="200" ></canvas>
+            <script>
+                new Chart(document.getElementById("chart5"), {
+                type: 'bar',
+                data: {
+                    labels: ["@k5"],
+                    datasets: [{
+                        label: "Название 5 диаграммы",
+                        data: [@v5],
+                        backgroundColor: [
+                            'rgba(0, 99, 132, 0.6)',
+                            'rgba(60, 99, 132, 0.6)',
+                            'rgba(120, 99, 132, 0.6)',
+                            'rgba(180, 99, 132, 0.6)',
+                            'rgba(240, 99, 132, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(0, 99, 132, 1)',
+                            'rgba(60, 99, 132, 1)',
+                            'rgba(120, 99, 132, 1)',
+                            'rgba(180, 99, 132, 1)',
+                            'rgba(240, 99, 132, 1)'
+                        ],
+                        borderWidth: 2,
+                        hoverBorderWidth: 0
+                    }],
+                    
+                },
+                options: {
+                    align: "center",
+                    indexAxis: 'y',
+                    elements: {
+                        rectangle: {
+                        borderSkipped: 'left',
+                        }
+                    },
+                }
+                });
+            </script>
+            </div>   
         </section>
 
+
         <section>
-            <h2>Раздел 5: Вопрос 4</h2>
-            <p>Диаграмма, её описание</p>
-            <canvas id="chart4" width="600" height="400"></canvas>
+            <h2 style="margin-left: 5%">Раздел 4: Общая диаграмма с причинами, какой-то комментарий по желанию</h2>    
+            <div style="align-items: center; width:500px; height:500px; margin-left: 5%; margin-top: 3%">
+            <canvas id="chart6" width="300" height="200" ></canvas>
+            <script>
+                new Chart(document.getElementById("chart6"), {
+                type: 'bar',
+                data: {
+                    labels: ["@k6"],
+                    datasets: [{
+                        label: "Название 6 диаграммы",
+                        data: [@v6],
+                        backgroundColor: [
+                            'rgba(0, 99, 132, 0.6)',
+                            'rgba(60, 99, 132, 0.6)',
+                            'rgba(120, 99, 132, 0.6)',
+                            'rgba(180, 99, 132, 0.6)',
+                            'rgba(240, 99, 132, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(0, 99, 132, 1)',
+                            'rgba(60, 99, 132, 1)',
+                            'rgba(120, 99, 132, 1)',
+                            'rgba(180, 99, 132, 1)',
+                            'rgba(240, 99, 132, 1)'
+                        ],
+                        borderWidth: 2,
+                        hoverBorderWidth: 0
+                    }],
+                    
+                },
+                options: {
+                    align: "center",
+                    indexAxis: 'y',
+                    elements: {
+                        rectangle: {
+                        borderSkipped: 'left',
+                        }
+                    },
+                }
+                });
+            </script>
+            </div>   
         </section>
     </main>
      
