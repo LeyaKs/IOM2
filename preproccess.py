@@ -9,11 +9,13 @@ def preprocess(array):
         if i != 4:
             length_user = len(array_user)
             for j in range(length_user):
-                array_ans[i].append(array_user[j][i])
+                if array_user[j][i] != '':
+                    array_ans[i].append(array_user[j][i])
             
         length_hr = len(array_hr)
         for j in range(length_hr):
-            array_ans[i].append(array_hr[j][i])
+            if (array_hr[j][i] != ''):
+                array_ans[i].append(array_hr[j][i])
             
     return array_ans
 
