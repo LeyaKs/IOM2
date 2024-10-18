@@ -28,7 +28,7 @@ def upload_file():
 
 def rep(array):
   ind = 1
-  with open("templates/report_sample.html", 'r+') as infile, open("templates/report.html", 'w', encoding='utf-8') as outfile:
+  with open("templates/report_sample.html", 'r+', encoding='utf-8') as infile, open("templates/report.html", 'w', encoding='utf-8') as outfile:
     for line in infile:
       
       keys = list(array[ind-1].keys())
