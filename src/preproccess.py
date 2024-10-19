@@ -1,8 +1,5 @@
-'''
-prepross for user and hr
-'''
 USELESS_ANSWERS = ['да', 'нет']
-def preprocess(array):
+def preprocess(array):      # prepross for user and hr
     array_ans = [[],[],[],[],[]]
     array_user = preprocess_user(array[0])
     array_hr = preprocess_hr(array[1])
@@ -35,11 +32,9 @@ def preprocess_user(array):
     lines_count = len(array)
     columns_count = len(array[0]) if len(array) > 0 else 0
     for line in range(lines_count):
-        # merging 1 and 1.1 questions
-        array[line][0] = ' '.join([array[line][0], array[line][1]])
+        array[line][0] = ' '.join([array[line][0], array[line][1]])     # merging 1 and 1.1 questions
         array[line].pop(1)
-        # processing each line
-        array[line] = [user_line_purify(str(string), column, string_dlc) 
+        array[line] = [user_line_purify(str(string), column, string_dlc)    # processing each line
         for string, column, string_dlc in string_unite(array[line], range(4))]
     return array
 
@@ -77,8 +72,7 @@ def preprocess_hr(array):
     lines_count = len(array)
     columns_count = len(array[0]) if len(array) > 0 else 0
     for line in range(lines_count):
-        # adding 1 question
-        if any([word in array[line][3] for word in HR_SPECIAL_WORDS]):
+        if any([word in array[line][3] for word in HR_SPECIAL_WORDS]):  # adding 1 question
             array[line].insert(0, 'желание сменить направление дейстельности')
         else:
             array[line].insert(0, '')
