@@ -32,7 +32,6 @@
                 data: {
                     labels: [@k1],
                     datasets: [{
-                        label: "Название первой диаграммы",
                         data: [@v1],
                         backgroundColor: [
                             'rgba(0, 99, 132, 0.6)',
@@ -54,6 +53,11 @@
                     
                 },
                 options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
                     align: "center",
                     indexAxis: 'y',
                     elements: {

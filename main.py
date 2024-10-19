@@ -14,65 +14,56 @@ def upload_file():
       return 'Файл не выбран'
     input_file_path = os.path.join('uploads', file.filename)
     file.save(input_file_path)
-
     array = group(file)
-    print(array)
     rep(array)
-    # Передача данных в JSON-формате в HTML
-    #chart_data_json = json.dumps(chart_data)
-    
     return render_template('report.html')
-
-
   return render_template('index.html')
 
 
-
 def rep(array):
-  workers = ("Работа", "Зарплата", "Менеджмент", "Возможности роста", 
+  workers = ["Работа", "Зарплата", "Менеджмент", "Возможности роста", 
   "Атмосфера", "Перегрузка", "Условия труда", "Стабильность", "Честность",
-  "Условия конкурентов привлекательнее", "Негативные эмоции")
-  personal = ("Переезд", "Семья", "Обучение", "Здоровье", "Ценности", "Приоритеты", "Неудовлетворение")
-  ind = 1
+  "Условия конкурентов привлекательнее", "Негативные эмоции"]
+  personal = ["Переезд", "Семья", "Обучение", "Здоровье", "Ценности", "Приоритеты", "Неудовлетворение"]
+  ind = 0
+  ind_list = 0
   with open("templates/report_sample.html", 'r+', encoding='utf-8') as infile, open("templates/report.html", 'w', encoding='utf-8') as outfile:
     for line in infile:
       
-      keys = list(array[ind-1].keys())
-      values = list(array[ind-1].values())
-      str_keys = "\""
-      str_values = ""
+      keys = list(array[ind_list].keys())
+      values = list(array[ind_list].values())
+      
       match(ind):
-        case 2:
-          for index in range(len(keys)):
-            if keys[index] in personal:
-              str_keys += keys[index]
-              str_keys += '" , "'
-              str_values += str(values[index])
-              str_values += ' , ' 
-        case 3:  
-          for index in range(len(keys)):
-            if keys[index] in workers:
-              str_keys += keys[index]
-              str_keys += '" , "'
-              str_values += str(values[index])
-              str_values += ' , '     
+        case 1:
+          result = create_list(keys, values, personal)
+        case 2:  
+          result = create_list(keys, values, workers)
+        case 3:
+          result = create_list(keys, values, personal + workers + ["Да","Нет"])
         case _:
-          for index in range(len(keys)):
-            if keys[index] in workers or keys[index] in personal:
-              str_keys += keys[index]
-              str_keys += '" , "'
-              str_values += str(values[index])
-              str_values += ' , '   
-      str_keys = str_keys[:-3]
-      str_values = str_values[:-3]
-      print(ind)
-      print(len(array))
-      line = line.replace(f'@k{ind}', str_keys)
-      line = line.replace(f'@v{ind}', str_values)
-      if str_values in line and ind != len(array):
+          result = create_list(keys, values, personal + workers)
+          
+      str_keys = result[0][:-3]
+      str_values = result[1][:-2]
+      line = line.replace(f'@k{ind+1}', str_keys)
+      line = line.replace(f'@v{ind+1}', str_values)
+      if str_values in line and ind_list != len(array):
         ind += 1
-
+        if (ind > 2):
+          ind_list += 1
       outfile.write(line)
+
+def create_list(keys, values, arr):
+  str_keys = "\""
+  str_values = ""
+  for index in range(len(keys)):
+    for j in range(len(arr)): 
+      if keys[index] in arr[j] and values[index] > 0:
+          str_keys += keys[index]
+          str_keys += '" , "'
+          str_values += str(values[index])
+          str_values += ' , ' 
+  return (str_keys, str_values)
 
 def init_dir(filename):
     if not os.path.exists(filename):
