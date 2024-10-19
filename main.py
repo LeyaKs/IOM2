@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST']) # func when located in root
 def upload_file():
   if request.method == 'POST':
-    if 'file' not in request.files or file.filename == '':
+    if 'file' not in request.files:
       return render_template('not_chosen.html')
     file = request.files['file']
     input_file_path = os.path.join('uploads', file.filename)
