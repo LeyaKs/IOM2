@@ -1,22 +1,22 @@
 from flask import Flask, request, send_file, render_template
 import os
 import json
-from data_grouped import group
+from src.data_grouped import group
 
 HDRS = 'HTTP/1.1 200 OK\nContent-Type: text/html; charset=utf-8\n\n'
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST']) #func when located in root
 def upload_file():
   if request.method == 'POST':
     file = request.files['file']
     if 'file' not in request.files or file.filename == '':
       return 'Файл не выбран'
     input_file_path = os.path.join('uploads', file.filename)
-    file.save(input_file_path)
-    array = group(file)
+    file.save(input_file_path) # save file it is uploaded
+    array = group(file) #convert file, return array of dicts for each question
     rep(array)
-    return render_template('report.html')
+    return render_template('report.html') #page if file is uploaded
   return render_template('index.html')
 
 
