@@ -12,6 +12,8 @@ def upload_file():
     if 'file' not in request.files:
       return 'Файл не выбран'
     file = request.files['file']
+    if 'file' not in request.files or file.filename == '':
+      return render_template('not_chosen.html')
     input_file_path = os.path.join('uploads', file.filename)
     file.save(input_file_path) # save file it is uploaded
     array = group(file) # convert file, return array of dicts for each question
