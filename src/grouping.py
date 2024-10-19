@@ -1,9 +1,6 @@
 def group_keywords(data_to_group : list[list[str]], grouped_keywords : dict[str, set[str]]) -> list[dict[str, int]]:
     result = list()
-    '''
-    Groups all the keywords using info grom grouped_keywords dictionary, counts each group frequencies
-    '''
-    for question in data_to_group:
+    for question in data_to_group:      # groups all the keywords using info grom grouped_keywords dictionary, counts each group frequencies
         result_for_question = dict()
         for answer in question:
             for word in answer:
