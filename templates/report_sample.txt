@@ -15,11 +15,10 @@
 
     <main>
         <section>
-            <h2 style="margin-left: 5%">Введение: Решение о смене работы не всегда принимается из-за низкой зарплаты или должности. 
-                 Диаграммы, представленные ниже, наглядно демонстрируют причины увольнения, помогая оптимизировать 
-                 стратегии удержания персонала и повысить лояльность сотрудников.</h2>
-            <p>Здесь будет текст, описывающий тему.</p>
-            <p>Можно добавить больше текста, разбить его на абзацы.</p>
+            <h2 style="margin-left: 5%">Введение:</h2>
+            <p style="margin-left: 5%"> Решение о смене работы не всегда принимается из-за низкой зарплаты или должности. 
+                Диаграммы, представленные ниже, наглядно демонстрируют причины увольнения, помогая оптимизировать 
+                стратегии удержания персонала и повысить лояльность сотрудников.</p>
         </section>
 
         <section>
@@ -77,7 +76,6 @@
                 data: {
                     labels: [@k2],
                     datasets: [{
-                        label: "Название 2 диаграммы",
                         data: [@v2],
                         backgroundColor: [
                             'rgba(0, 99, 132, 0.6)',
@@ -99,6 +97,11 @@
                     
                 },
                 options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
                     align: "center",
                     indexAxis: 'y',
                     elements: {
@@ -118,7 +121,6 @@
                 data: {
                     labels: [@k3],
                     datasets: [{
-                        label: "Название 3 диаграммы",
                         data: [@v3],
                         backgroundColor: [
                             'rgba(0, 99, 132, 0.6)',
@@ -140,6 +142,11 @@
                     
                 },
                 options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
                     align: "center",
                     indexAxis: 'y',
                     elements: {
@@ -163,7 +170,6 @@
                 data: {
                     labels: [@k4],
                     datasets: [{
-                        label: "Название 4 диаграммы",
                         data: [@v4],
                         backgroundColor: [
                             'rgba(0, 99, 132, 0.6)',
@@ -185,6 +191,11 @@
                     
                 },
                 options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
                     align: "center",
                     indexAxis: 'y',
                     elements: {
@@ -208,7 +219,6 @@
                 data: {
                     labels: [@k5],
                     datasets: [{
-                        label: "Название 5 диаграммы",
                         data: [@v5],
                         backgroundColor: [
                             'rgba(0, 99, 132, 0.6)',
@@ -230,6 +240,11 @@
                     
                 },
                 options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
                     align: "center",
                     indexAxis: 'y',
                     elements: {
@@ -254,7 +269,6 @@
                 data: {
                     labels: [@k6],
                     datasets: [{
-                        label: "Название 6 диаграммы",
                         data: [@v6],
                         backgroundColor: [
                             'rgba(0, 99, 132, 0.6)',
@@ -276,6 +290,11 @@
                     
                 },
                 options: {
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
                     align: "center",
                     indexAxis: 'y',
                     elements: {

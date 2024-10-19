@@ -27,7 +27,7 @@ def rep(array):
   personal = ["Переезд", "Семья", "Обучение", "Здоровье", "Ценности", "Приоритеты", "Неудовлетворение"]
   ind = 0
   ind_list = 0
-  with open("templates/report_sample.html", 'r+', encoding='utf-8') as infile, open("templates/report.html", 'w', encoding='utf-8') as outfile:
+  with open("templates/report_sample.txt", 'r+', encoding='utf-8') as infile, open("templates/report.html", 'w', encoding='utf-8') as outfile:
     for line in infile:
       
       keys = list(array[ind_list].keys())
