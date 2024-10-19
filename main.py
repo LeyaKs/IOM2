@@ -51,7 +51,7 @@ def rep(array):
           ind_list += 1
       outfile.write(line)
 
-def create_list(keys, values, arr):
+def create_list(keys, values, arr) -> tuple[str, str]:
   str_keys = "\""     #Creating a keys string for a diagram
   str_values = ""     #Creating a values string for a diagram
   for index in range(len(keys)):
