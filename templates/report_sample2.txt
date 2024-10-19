@@ -188,14 +188,23 @@
       <h1 align="center"> Анализ причин увольнения сотрудников в компании</h1>
   </header>
   <main>
-    <section>
+    <div class="diagram" style="height: 95vh">
+        <div class="outer" style="height: 100%">
+          <span class="inner" style="height: 100%">
+            <section style="height: 100%; vertical-align: center">
         <h2 style="margin-left: 5%"> Введение:</h2>
         <p style="margin-left: 5%"> Решение о смене работы не всегда принимается из-за низкой зарплаты или должности. </p>
         <p style="margin-left: 5%"> Диаграммы, представленные ниже, наглядно демонстрируют причины увольнения, помогая оптимизировать </p>
         <p style="margin-left: 5%"> стратегии удержания персонала и повысить лояльность сотрудников.</p>
     </section>
+          </span>
+        </div>
+      </div>
 
-    <section>
+    <div class="diagram" style="height: 95vh">
+        <div class="outer" style="height: 100%">
+          <span class="inner" style="height: 100%">
+            <section style="height: 100%; vertical-align: center">
         <h2 style="margin-left: 5%"> 1. Какие причины (факторы) сформировали ваше решение уйти из компании</h2>    
         <div style="align-items: center; width:500px; height:500px; margin-left: 5%; margin-top: 3%">
         <canvas id="chart1" width="300" height="200" ></canvas>
@@ -245,6 +254,15 @@
         <p style="margin-left: 5%"> На представленной диаграмме приведены основные причины, указанные сотрудниками </p>
         <p style="margin-left: 5%"> Ниже эти причины будут разделены на личные (на которые компания не может повлиять).</p>
         <p style="margin-left: 5%"> и корпоративные (на которые компания может повлиять) </p>
+      </section>
+    </span>
+  </div>
+</div> 
+
+  <div class="diagram" style="height: 95vh">
+    <div class="outer">
+      <span class="inner">
+        <section>
         <h3 style="margin-left: 5%"> Личные причины увольнения сотрудников</h3> 
         <div style="align-items: center; width:500px; height:500px; margin-left: 5%; margin-top: 3%">
         <canvas id="chart2" width="300" height="200" ></canvas>
@@ -291,7 +309,17 @@
             });
         </script>
         </div>   
-        <h3 style="margin-left: 5%"> Корпоративные причины увольнения сотрудников</h3> 
+        
+        </section>
+      </span>
+    </div>
+  </div>
+
+  <div class="diagram" style="height: 95vh">
+    <div class="outer">
+      <span class="inner">
+        <section>
+          <h3 style="margin-left: 5%"> Корпоративные причины увольнения сотрудников</h3>
         <div style="align-items: center; width:500px; height:500px; margin-left: 5%; margin-top: 3%">
         <canvas id="chart3" width="300" height="200" ></canvas>
         <script>
@@ -338,8 +366,14 @@
         </script>
         </div>   
     </section>
+  </span>
+</div>
+</div>
 
-    <section>
+    <div class="diagram" style="height: 95vh">
+        <div class="outer" style="height: 100%">
+          <span class="inner" style="height: 100%">
+            <section style="height: 100%; vertical-align: center">
         <h2 style="margin-left: 5%"> Рассматриваете ли вы возможность остаться в компании/перевестись внутри отрасли? </h2>    
         <div style="align-items: center; width:500px; height:500px; margin-left: 5%; margin-top: 3%">
         <canvas id="chart4" width="300" height="200" ></canvas>
@@ -388,8 +422,14 @@
         </div>   
         <p style="margin-left: 5%"> На диаграмме выше, помимо ответов да / нет так же приведены основные причины, из-за которых сотрудники НЕ желают оставаться в компании / переводиться внутри отрасли </p>
     </section>
+          </span>
+        </div>
+      </div>
 
-    <section>
+    <div class="diagram" style="height: 95vh">
+        <div class="outer" style="height: 100%">
+          <span class="inner" style="height: 100%">
+            <section style="height: 100%; vertical-align: center">
         <h2 style="margin-left: 5%"> Рассматриваете ли вы возможность возвращения в компанию, если нет, то почему?</h2>    
         <div style="align-items: center; width:500px; height:500px; margin-left: 5%; margin-top: 3%">
         <canvas id="chart5" width="300" height="200" ></canvas>
@@ -438,9 +478,14 @@
         </div>   
          <p style="margin-left: 5%"> На диаграмме выше показаны основные причины, основываясь на которых люди не желают возвращаться в компанию</p>
     </section>
+          </span>
+        </div>
+      </div>
 
-
-    <section>
+    <div class="diagram" style="height: 95vh">
+        <div class="outer" style="height: 100%">
+          <span class="inner" style="height: 100%">
+            <section style="height: 100%; vertical-align: center">
         <h2 style="margin-left: 5%"> Готовы ли вы рекомендовать компанию как работодателя, если нет, то почему?</h2>    
         <div style="align-items: center; width:500px; height:500px; margin-left: 5%; margin-top: 3%">
         <canvas id="chart6" width="300" height="200" ></canvas>
@@ -489,6 +534,9 @@
         </div>   
         <p style="margin-left: 5%"> На представленной диаграмме приведены основные причины, которые указывали сотрудники в ответе на вопрос о рекомендации компании, причем указаны как положительные, так и негативные. </p>
     </section>
+          </span>
+        </div>
+      </div>
   </main>
     <span class="information-dlc" style="color: white;">
       <p>Отчёт команды IOM2</p>

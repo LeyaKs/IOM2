@@ -27,7 +27,7 @@ def rep(array):
   personal = ["Переезд", "Семья", "Обучение", "Здоровье", "Ценности", "Приоритеты", "Неудовлетворение"]
   ind = 0     #Diagram index
   ind_list = 0  #Question index
-  with open("templates/report_sample.txt", 'r+', encoding='utf-8') as infile, open("templates/report.html", 'w', encoding='utf-8') as outfile:  #Открытие шаблона txt и преобразование его в html
+  with open("templates/report_sample2.txt", 'r+', encoding='utf-8') as infile, open("templates/report.html", 'w', encoding='utf-8') as outfile:  #Открытие шаблона txt и преобразование его в html
     for line in infile: #Iterating through lines in template html file
       keys = list(array[ind_list].keys()) #keys(aka reasons) array
       values = list(array[ind_list].values()) #values(frequencies) array
