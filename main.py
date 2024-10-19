@@ -23,28 +23,28 @@ def upload_file():
 def rep(array):
   workers = ["Работа", "Зарплата", "Менеджмент", "Возможности роста", 
   "Атмосфера", "Перегрузка", "Условия труда", "Стабильность", "Честность",
-  "Условия конкурентов привлекательнее", "Негативные эмоции", "Позитивные эмоции"]  #Список корпоративных причин
-  personal = ["Переезд", "Семья", "Обучение", "Здоровье", "Ценности", "Приоритеты", "Неудовлетворение"]   #Список личных причин
-  ind = 0     #Индекс для генерации диаграмм
-  ind_list = 0  #Индекс для прохода по array
+  "Условия конкурентов привлекательнее", "Негативные эмоции", "Позитивные эмоции"]
+  personal = ["Переезд", "Семья", "Обучение", "Здоровье", "Ценности", "Приоритеты", "Неудовлетворение"]
+  ind = 0     #Diagram index
+  ind_list = 0  #Question index
   with open("templates/report_sample.txt", 'r+', encoding='utf-8') as infile, open("templates/report.html", 'w', encoding='utf-8') as outfile:  #Открытие шаблона txt и преобразование его в html
-    for line in infile: #Прогонка по строкам txt шаблона
-      keys = list(array[ind_list].keys()) #Массив ключей (причин)
-      values = list(array[ind_list].values()) #Массив значений (вхождений ответов в группу)
+    for line in infile: #Iterating through lines in template html file
+      keys = list(array[ind_list].keys()) #keys(aka reasons) array
+      values = list(array[ind_list].values()) #values(frequencies) array
       match(ind):
         case 1:
-          result = create_list(keys, values, personal)  #Диаграмма с личными причинами
+          result = create_list(keys, values, personal)  #A diagram with personal reasons
         case 2:  
-          result = create_list(keys, values, workers)   #Диаграмма с корпоративными причинами
+          result = create_list(keys, values, workers)   #A diagram with general reasons
         case 3,4,5:
-          result = create_list(keys, values, personal + workers + ["Да","Нет"])   #Диаграмма с ответом на 2,3,4 вопрос
+          result = create_list(keys, values, personal + workers + ["Да","Нет"])   #Diagrams for 2, 3, 4 questions
         case _:
-          result = create_list(keys, values, personal + workers)  #Диаграммы с ответом на 1 вопрос
+          result = create_list(keys, values, personal + workers)  #Diagrams for 1 question
           
-      str_keys = result[0][:-3]   #Срез, удаляющий ," в конце
-      str_values = result[1][:-2] #Срез, удаляющий , в конце
-      line = line.replace(f'@k{ind+1}', str_keys) #Генерация html строки из txt строки с вставкой
-      line = line.replace(f'@v{ind+1}', str_values) #Генерация html строки из txt строки с вставкой
+      str_keys = result[0][:-3]   #deleting ," in the end
+      str_values = result[1][:-2] #deleting commas in the end
+      line = line.replace(f'@k{ind+1}', str_keys) #insterting keys instead of a label in template
+      line = line.replace(f'@v{ind+1}', str_values) #insterting values instead of a label in template
       if str_values in line and ind_list != len(array):
         ind += 1
         if (ind > 2):
@@ -52,11 +52,11 @@ def rep(array):
       outfile.write(line)
 
 def create_list(keys, values, arr):
-  str_keys = "\""     #Создание шаблона строки ключей для диаграммы
-  str_values = ""     #Создание шаблона строки значений для диаграммы
+  str_keys = "\""     #Creating a keys string for a diagram
+  str_values = ""     #Creating a values string for a diagram
   for index in range(len(keys)):
     for j in range(len(arr)): 
-      if keys[index] in arr[j] and values[index] >= 3: #Проверка, что вхождений 3 и больше
+      if keys[index] in arr[j] and values[index] >= 3: #Check that there are not less than 3 entries
           str_keys += keys[index]
           str_keys += '" , "'
           str_values += str(values[index])
