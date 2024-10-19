@@ -3,7 +3,7 @@ import os
 import json
 from src.data_grouped import group
 
-HDRS = 'HTTP/1.1 200 OK\nContent-Type: text/html; charset=utf-8\n\n'
+# HDRS = 'HTTP/1.1 200 OK\nContent-Type: text/html; charset=utf-8\n\n'
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST']) # func when located in root
