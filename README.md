@@ -1,16 +1,16 @@
 # Анализ результатов выходной анкеты увольняющихся сотрудников
 **Название команды:** IOM2<br>
-**Состав команды:** 
-Большаков Михаил 
-Гречишников Михаил 
-Карпов Иван 
-Каширина Олеся<br>
+**Состав команды:** <br>
+Большаков Михаил <br>
+Гречишников Михаил <br>
+Карпов Иван <br>
+Каширина Олеся <br>
 
 ## Описание проекта
 Проект представляет собой сервис, преобразующий датасет в формате excel в инфографику, иллюстрирующую причины увольнения сотрудников
 
 ## Описание репозитория
-main.py data_grouped.py grouping.py groups_parse.py keywords.py parsing.py preproccess.py translator.py ----- Python файлы, backend
+main.py data_grouped.py grouping.py groups_parse.py keywords.py parsing.py preproccess.py ----- Python файлы, backend
 templates ----- папка, в которой находится index.html, report.html, frontend
 report_sample.txt - шаблон для дальнейшего редактирования report.html
 
