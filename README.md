@@ -14,11 +14,11 @@ main.py data_grouped.py grouping.py groups_parse.py keywords.py parsing.py prepr
 templates ----- папка, в которой находится index.html, report.html, frontend
 report_sample.txt - шаблон для дальнейшего редактирования report.html
 
-### Два варианта проверки
-## Ссылка на сайт
+## Два варианта проверки
+### Ссылка на сайт
 https://iom2.onrender.com
 
-## Запуск
+### Запуск
 Чтобы запустить данный проект, нужно иметь установленный Docker и Docker-compose. Далее выполнить скрипт:
 
 ```
