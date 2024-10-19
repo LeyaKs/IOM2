@@ -9,11 +9,9 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST']) # func when located in root
 def upload_file():
   if request.method == 'POST':
-    if 'file' not in request.files:
-      return 'Файл не выбран'
-    file = request.files['file']
     if 'file' not in request.files or file.filename == '':
       return render_template('not_chosen.html')
+    file = request.files['file']
     input_file_path = os.path.join('uploads', file.filename)
     file.save(input_file_path) # save file it is uploaded
     array = group(file) # convert file, return array of dicts for each question
