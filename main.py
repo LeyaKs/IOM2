@@ -17,7 +17,7 @@ def upload_file():
     array = group(file) #convert file, return array of dicts for each question
     rep(array)
     return render_template('report.html') #page if file is uploaded
-  return render_template('index.html')
+  return render_template('index2.html')
 
 
 def rep(array):
