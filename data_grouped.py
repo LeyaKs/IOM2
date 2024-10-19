@@ -6,6 +6,10 @@ from src.groups_parse import parse_groups_file
 from src.grouping import group_keywords
 
 def group(filename : str) -> list[dict[str, int]]:
+    """
+Opens filename as an excel file and returns a list of 5 elements, an element for each question. 
+Each element is a dict, with keywords(reasons) as keys and their amounts in the input file as values
+    """
     parsing_res = parsing(filename)
     prep_res = preprocess(parsing_res)
     keywords_res = to_key_words(prep_res)

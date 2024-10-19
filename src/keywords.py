@@ -8,6 +8,7 @@ _g_morph = pymorphy3.MorphAnalyzer()
 def to_key_words(questions : list[list[str]]) -> list[list[str]]:
     questions = lemmatise_questions(questions)
     all_kwords = get_all_keywords(questions, _g_key_words_amount)
+    # removing all words, except for keywords
     for question in questions:
         for i in range(len(question)):
             this_answer_kwords = []
@@ -18,12 +19,14 @@ def to_key_words(questions : list[list[str]]) -> list[list[str]]:
     return questions
 
 def get_all_keywords(questions : list[list[str]], amount) -> set[str]:
+    # geting a list of all words
     all_answers = []
     for question in questions:
         all_answers.extend(question)
     all_words = []
     for word in all_answers:
         all_words.extend(word)
+    # finding keywords by frequency
     vectorizer = TfidfVectorizer()
     vector = vectorizer.fit_transform(all_words)
     feature_names = vectorizer.get_feature_names_out()
@@ -43,11 +46,3 @@ def lemmatise_questions(questions : list[list[str]]) -> list[list[str]]:
         for i in range(len(question)):
             question[i] = lemmatize_string(question[i])
     return questions
-
-
-def main():
-    questions = [["привет, я миша", "привет, я ваня", "привет, я олеся"], ["вставили текст", "вставить", "я жак Фреско, привет!"], ["ра ра ра цы цы цы ыыыыыыыыыыыыыыыыыы"]]
-    print(to_key_words(questions))
-
-if __name__ == "__main__":
-    main()
