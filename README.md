@@ -21,7 +21,8 @@ https://iom2.onrender.com
 ## Запуск
 Чтобы запустить данный проект, нужно иметь установленный Docker и Docker-compose. Далее выполнить скрипт:
 
-```chmod +x run.sh
+```
+chmod +x run.sh
 ./run.sh
 ```
 
