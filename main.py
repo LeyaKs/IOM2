@@ -25,6 +25,7 @@ def rep(array):
   "Атмосфера", "Перегрузка", "Условия труда", "Стабильность", "Честность",
   "Условия конкурентов привлекательнее", "Негативные эмоции", "Позитивные эмоции"]
   personal = ["Переезд", "Семья", "Обучение", "Здоровье", "Ценности", "Приоритеты", "Неудовлетворение"]
+  simple_answers = ["Да","Нет"]
   ind = 0     #Diagram index
   ind_list = 0  #Question index
   with open("templates/report_sample.txt", 'r+', encoding='utf-8') as infile, open("templates/report.html", 'w', encoding='utf-8') as outfile:  #Открытие шаблона txt и преобразование его в html
@@ -36,8 +37,8 @@ def rep(array):
           result = create_list(keys, values, personal)  #A diagram with personal reasons
         case 2:  
           result = create_list(keys, values, workers)   #A diagram with general reasons
-        case 3,4,5:
-          result = create_list(keys, values, personal + workers + ["Да","Нет"])   #Diagrams for 2, 3, 4 questions
+        case 3 | 4 | 5:
+          result = create_list(keys, values, personal + workers + simple_answers)   #Diagrams for 2, 3, 4 questions
         case _:
           result = create_list(keys, values, personal + workers)  #Diagrams for 1 question
           
@@ -55,13 +56,12 @@ def create_list(keys, values, arr):
   str_keys = "\""     #Creating a keys string for a diagram
   str_values = ""     #Creating a values string for a diagram
   for index in range(len(keys)):
-    for j in range(len(arr)): 
-      if keys[index] in arr[j] and values[index] >= 3: #Check that there are not less than 3 entries
+      if (keys[index] in arr) and (values[index] >= 3): #Check that there are not less than 3 entries
           str_keys += keys[index]
           str_keys += '" , "'
           str_values += str(values[index])
           str_values += ' , ' 
-  return (str_keys, str_values)
+  return [str_keys, str_values]
 
 def init_dir(filename):
     if not os.path.exists(filename):
