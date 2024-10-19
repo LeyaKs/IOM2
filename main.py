@@ -6,17 +6,19 @@ from src.data_grouped import group
 HDRS = 'HTTP/1.1 200 OK\nContent-Type: text/html; charset=utf-8\n\n'
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST']) # func when located in root
+
+@app.route('/', methods=['GET', 'POST'])  # func when located in root
 def upload_file():
   if request.method == 'POST':
-    if 'file' not in request.files:
-      return render_template('not_chosen.html')
     file = request.files['file']
+    if 'file' not in request.files or file.filename == '':
+      return render_template('not_chosen.html')
+    
     input_file_path = os.path.join('uploads', file.filename)
-    file.save(input_file_path) # save file it is uploaded
-    array = group(file) # convert file, return array of dicts for each question
+    file.save(input_file_path)  # save file it is uploaded
+    array = group(file)  # convert file, return array of dicts for each question
     rep(array)
-    return render_template('report.html') # page if file is uploaded
+    return render_template('report.html')  # page if file is uploaded
   return render_template('index.html')
 
 
@@ -29,8 +31,8 @@ def rep(array):
   ind = 0     # diagram index
   ind_list = 0  # question index
   with open("templates/report_sample.txt", 'r+', encoding='utf-8') as infile, open("templates/report.html", 'w', encoding='utf-8') as outfile:  #Открытие шаблона txt и преобразование его в html
-    for line in infile: # iterating through lines in template html file
-      keys = list(array[ind_list].keys()) # keys(reasons) array
+    for line in infile:  # iterating through lines in template html file
+      keys = list(array[ind_list].keys())  # keys(reasons) array
       values = list(array[ind_list].values()) # values(frequencies) array
       match(ind):
         case 1:
