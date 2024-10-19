@@ -276,7 +276,6 @@
                 },
             }
             });
-            sortHorizontalBarChart(chart1); 
         </script>
         </div>     
         <p style="margin-left: 5%; margin-right: 5%"> На представленной диаграмме приведены основные причины, указанные сотрудниками </p>

@@ -25,6 +25,7 @@ def rep(array):
   "Атмосфера", "Перегрузка", "Условия труда", "Стабильность", "Честность",
   "Условия конкурентов привлекательнее", "Негативные эмоции", "Позитивные эмоции"]
   personal = ["Переезд", "Семья", "Обучение", "Здоровье", "Ценности", "Приоритеты", "Неудовлетворение"]
+  simple_answers = ["Да", "Нет"]
   ind = 0     # diagram index
   ind_list = 0  # question index
   with open("templates/report_sample.txt", 'r+', encoding='utf-8') as infile, open("templates/report.html", 'w', encoding='utf-8') as outfile:  #Открытие шаблона txt и преобразование его в html
@@ -36,8 +37,8 @@ def rep(array):
           result = create_list(keys, values, personal)  # a diagram with personal reasons
         case 2:  
           result = create_list(keys, values, workers)   # a diagram with general reasons
-        case 3,4,5:
-          result = create_list(keys, values, personal + workers + ["Да","Нет"])   # diagrams for 2, 3, 4 questions
+        case 3 | 4 | 5:
+          result = create_list(keys, values, personal + workers + simple_answers)   # diagrams for 2, 3, 4 questions
         case _:
           result = create_list(keys, values, personal + workers)  # diagrams for 1 question
           
