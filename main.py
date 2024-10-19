@@ -1,7 +1,7 @@
 from flask import Flask, request, send_file, render_template
 import os
 import json
-from data_grouped import group
+from src.data_grouped import group
 
 HDRS = 'HTTP/1.1 200 OK\nContent-Type: text/html; charset=utf-8\n\n'
 app = Flask(__name__)
@@ -25,12 +25,14 @@ def rep(array):
   "Атмосфера", "Перегрузка", "Условия труда", "Стабильность", "Честность",
   "Условия конкурентов привлекательнее", "Негативные эмоции", "Позитивные эмоции"]
   personal = ["Переезд", "Семья", "Обучение", "Здоровье", "Ценности", "Приоритеты", "Неудовлетворение"]
-  ind = 0     #Diagram index
-  ind_list = 0  #Question index
-  with open("templates/report_sample.txt", 'r+', encoding='utf-8') as infile, open("templates/report.html", 'w', encoding='utf-8') as outfile:  #Открытие шаблона txt и преобразование его в html
-    for line in infile: #Iterating through lines in template html file
-      keys = list(array[ind_list].keys()) #keys(aka reasons) array
-      values = list(array[ind_list].values()) #values(frequencies) array
+  ind = 0
+  ind_list = 0
+  with open("templates/report_sample.txt", 'r+', encoding='utf-8') as infile, open("templates/report.html", 'w', encoding='utf-8') as outfile:
+    for line in infile:
+      
+      keys = list(array[ind_list].keys())
+      values = list(array[ind_list].values())
+      
       match(ind):
         case 1:
           result = create_list(keys, values, personal)  #A diagram with personal reasons
